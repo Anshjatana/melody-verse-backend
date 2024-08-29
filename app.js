@@ -17,6 +17,8 @@ app.use(express.json());
 app.use('/', require('./routes/auth'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
+//allow all requests from all origins & let the browser handle CORS
+app.use(cors());
 
 
 const port = process.env.PORT || 8000;
