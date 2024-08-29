@@ -18,7 +18,12 @@ app.use('/', require('./routes/auth'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 //allow all requests from all origins & let the browser handle CORS
-app.use(cors());
+app.use(cors({
+    origin: 'https://melodyverse-ansh.netlify.app/',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
 
 
 const port = process.env.PORT || 8000;
