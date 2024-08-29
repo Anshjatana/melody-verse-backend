@@ -14,10 +14,10 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 
 // CORS Configuration
 app.use(cors({
-    origin: 'https://melodyverse-ansh.netlify.app', // Ensure no trailing slash
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: 'https://melodyverse-ansh.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Allow cookies or other credentials
+    credentials: true
   }));
 
 // middlewares
