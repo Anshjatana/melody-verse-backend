@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
-const cors = require('cors'); 
 const mongoose = require('mongoose');
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -12,13 +11,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log('Database connection error', err);
 });
 
-// CORS Configuration
-app.use(cors({
-    origin: 'https://melodyverse-ansh.netlify.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-  }));
+app.use(cors());
 
 // middlewares
 app.use(express.json());

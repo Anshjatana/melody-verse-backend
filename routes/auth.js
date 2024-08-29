@@ -9,13 +9,14 @@ const router = express.Router();
 const cors = require("cors");
 const authenticateToken = require("../middleware/authenticateToken");
 
-// middleware
-router.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+// CORS Configuration
+router.use(cors({
+  origin: 'https://melodyverse-ansh.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 // Public route
 router.get("/", test);
 router.post("/signup", registerUser);
