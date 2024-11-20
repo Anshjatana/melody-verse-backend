@@ -13,12 +13,25 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 // CORS Configuration
-app.use(cors({
-    origin: 'https://melodyverse-ansh.netlify.app',
+const allowedOrigins = [
+    'https://melodyverse-ansh.netlify.app',
+    'https://melodyverse.anshjatana.online'
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      // Check if the origin is in the list of allowed origins
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   }));
+  
 
 // middlewares
 app.use(express.json());
