@@ -15,7 +15,8 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 // CORS Configuration
 const allowedOrigins = [
     'https://melodyverse-ansh.netlify.app',
-    'https://melodyverse.anshjatana.online'
+    'https://melodyverse.anshjatana.online',
+    'http://localhost:3000'
   ];
   
   app.use(cors({
